@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+  </head>
+  <body>
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    <h1>Registration</h1>
+    <form action="{% url 'belt:register' %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="username" value="Username">
+      <input type="text" name="alios" value="Alios">
+      <input type="email" name="email" value="Email">
+      <input type="password" name="password" value="Password">
+      <input type="password" name="confirmpass" value="Confirm Password">
+      <input type="submit" name="type" value="Register">
+    </form>
+    <h1>Login</h1>
+    <form action="{% url 'belt:login' %}" method="post">
+      {% csrf_token %}
+      <input type="email" name="email" value="Email">
+      <input type="password" name="password" value="Password">
+      <input type="submit" name="type" value="Login">
+  </body>
+</html>
